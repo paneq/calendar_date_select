@@ -5,6 +5,8 @@ require "calendar_date_select/includes_helper.rb"
 require 'rails'
 require 'active_support'
 
+include Rake::DSL
+
 module CalendarDateSelect
 
   Files = [
