@@ -1,3 +1,4 @@
+#Adding this line for Rails 3 fix
 include Rake::DSL
 require "calendar_date_select/calendar_date_select.rb"
 require "calendar_date_select/form_helpers.rb"
