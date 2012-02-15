@@ -1,3 +1,4 @@
+include Rake::DSL
 require "calendar_date_select/calendar_date_select.rb"
 require "calendar_date_select/form_helpers.rb"
 require "calendar_date_select/includes_helper.rb"
