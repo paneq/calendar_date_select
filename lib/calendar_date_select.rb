@@ -40,7 +40,7 @@ module CalendarDateSelect
             FileUtils.mkdir_p(dest, :verbose => true)
             FileUtils.cp(Dir.glob(source+'/*.*'), dest, :verbose => true)
           end
-
+#this is a new change
         end # task
       end #namespace
     end # rake_tasks
