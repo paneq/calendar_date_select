@@ -102,6 +102,7 @@ module CalendarDateSelect::FormHelpers
     javascript_options.delete(:format)
 
     options[:id] ||= name
+    options.merge!(:onclick => "new CalendarDateSelect( $(this), #{"{#{javascript_options.keys.map { |k| "#{k}:#{javascript_options[k]}" }.sort.join(', ')}}"} );")
     tag = javascript_options[:hidden] || javascript_options[:embedded] ?
       hidden_field_tag(name, value, options) :
       text_field_tag(name, value, options)
@@ -145,9 +146,10 @@ module CalendarDateSelect::FormHelpers
 
     
     options.delete(:object)
-    options.merge(:type => (javascript_options[:hidden] || javascript_options[:embedded]) ? "hidden" : "text")
+    options.merge!(:type => (javascript_options[:hidden] || javascript_options[:embedded]) ? "hidden" : "text")
+    options.merge!(:onclick => "new CalendarDateSelect( $(this), #{"{#{javascript_options.keys.map { |k| "#{k}:#{javascript_options[k]}" }.sort.join(', ')}}"} );")
     tag = ActionView::Helpers::Tags::TextField.new(object, method, self, options).render
-    
+
     calendar_date_select_output(
       tag,
       image,
@@ -206,7 +208,6 @@ module CalendarDateSelect::FormHelpers
     end
 
     def calendar_date_select_output(input, image, options = {}, javascript_options = {})
-      
       out = input
       
       if javascript_options[:embedded]
