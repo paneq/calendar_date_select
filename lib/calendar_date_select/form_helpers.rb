@@ -102,6 +102,7 @@ module CalendarDateSelect::FormHelpers
     javascript_options.delete(:format)
 
     options[:id] ||= name
+    options.merge!(:onclick => "new CalendarDateSelect( $(this), #{"{#{javascript_options.keys.map { |k| "#{k}:#{javascript_options[k]}" }.sort.join(', ')}}"} );")
     tag = javascript_options[:hidden] || javascript_options[:embedded] ?
       hidden_field_tag(name, value, options) :
       text_field_tag(name, value, options)
@@ -143,9 +144,14 @@ module CalendarDateSelect::FormHelpers
         end
       end
 
-    tag = ActionView::Helpers::InstanceTag.new_with_backwards_compatibility(object, method, self, options.delete(:object))
+    
+    options.delete(:object)
+    options.merge!(:type => (javascript_options[:hidden] || javascript_options[:embedded]) ? "hidden" : "text")
+    options.merge!(:onclick => "new CalendarDateSelect( $(this), #{"{#{javascript_options.keys.map { |k| "#{k}:#{javascript_options[k]}" }.sort.join(', ')}}"} );")
+    tag = ActionView::Helpers::Tags::TextField.new(object, method, self, options).render
+
     calendar_date_select_output(
-      tag.to_input_field_tag( (javascript_options[:hidden] || javascript_options[:embedded]) ? "hidden" : "text", options),
+      tag,
       image,
       options,
       javascript_options
@@ -203,15 +209,16 @@ module CalendarDateSelect::FormHelpers
 
     def calendar_date_select_output(input, image, options = {}, javascript_options = {})
       out = input
+      
       if javascript_options[:embedded]
         uniq_id = "cds_placeholder_#{(rand*100000).to_i}"
         # we need to be able to locate the target input element, so lets stick an invisible span tag here we can easily locate
         out << content_tag(:span, nil, :style => "display: none; position: absolute;", :id => uniq_id)
-        out << javascript_tag("new CalendarDateSelect( $('#{uniq_id}').previous(), #{options_for_javascript(javascript_options)} ); ")
+        out << javascript_tag("new CalendarDateSelect( $('#{uniq_id}').previous(), #{"{#{javascript_options.keys.map { |k| "#{k}:#{javascript_options[k]}" }.sort.join(', ')}}"} ); ")
       else
         out << " "
         out << image_tag(image,
-            :onclick => "new CalendarDateSelect( $(this).previous(), #{options_for_javascript(javascript_options)} );",
+            :onclick => "new CalendarDateSelect( $(this).previous(), #{"{#{javascript_options.keys.map { |k| "#{k}:#{javascript_options[k]}" }.sort.join(', ')}}"} );",
             :style => 'border:0px; cursor:pointer;',
 			:class=>'calendar_date_select_popup_icon')
       end

@@ -81,6 +81,7 @@ Gem::Specification.new do |s|
      "spec/calendar_date_select/includes_helper_spec.rb",
      "spec/spec_helper.rb"
   ]
+  s.add_dependency 'prototype-rails'
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
