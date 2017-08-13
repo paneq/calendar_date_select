@@ -1,9 +1,10 @@
-require "rubygems"
+require 'rubygems'
 
-require 'spec'
+require 'rspec'
 
-gem 'activesupport', "~> 2.3.5"
-gem 'actionpack', ">= 2.2.0"
+gem 'railties', '~> 4.2.0'
+gem 'activesupport', '~> 4.2.0'
+gem 'actionpack', '~> 4.2.0'
 
 require 'active_support'
 require 'action_pack'
@@ -12,10 +13,6 @@ require 'action_view'
 
 require 'ostruct'
 
-ActionView::Helpers::InstanceTag.class_eval do
-  class << self; alias new_with_backwards_compatibility new; end
-end
-
 $: << (File.dirname(__FILE__) + "/../lib")
 require "calendar_date_select"
 
@@ -23,4 +20,28 @@ class String
   def to_regexp
     is_a?(Regexp) ? self : Regexp.new(Regexp.escape(self.to_s))
   end
+end
+
+module CalendarDateSelectFormHelpers
+  class CalendarDateSelectTag
+    def options_for_javascript(options)
+      if options.empty?
+        '{}'
+      else
+        "{#{options.keys.map { |k| "#{k}:#{options[k]}" }.sort.join(', ')}}"
+      end
+    end
+  end
+end
+
+RSpec.configure do | config |
+
+  # http://stackoverflow.com/questions/1819614/how-do-i-globally-configure-rspec-to-keep-the-color-and-format-specdoc-o
+  #
+  # Use color in STDOUT,
+  # use color not only in STDOUT but also in pagers and files.
+
+  config.color = true
+  config.tty   = true
+
 end

@@ -1,3 +1,7 @@
+== Version 1.17.0
+
+* Unofficial release that combines some API call updates in https://github.com/timcharper/calendar_date_select with a new Gem version to provide compatibility under Rails 4 using exactly the same gem-style semantics as previous releases. This isn't as clean as a Rails Engine, but the Rails Engine fork doesn't currently work properly. (Andrew Hodgkinson)
+
 == Version 1.16.2
 
 * Fixed calendar_date_select's method of firing onChange for its target element. (Ethan)
@@ -58,7 +62,7 @@
 
 == Version 1.12 ==
  * Updated for compatibility with Rails 2.2
- 
+
 == Version 1.11.1 ==
  * properly wrap buttons if they are too big for the line
  * more translations: german (Jonas), Added russian translation (DEkart)
@@ -93,7 +97,7 @@ Mar 24. 2008
 == Version 1.10.2 ==
 Mar 10. 2008
  * bugfix: calendar_date_select_tag doesn't format Time and Date values (thanks for the patch, sskirby!)
- 
+
 == Version 1.10.1 ==
 Mar 10, 2008
  * updated to automatically install locale folder
@@ -101,11 +105,11 @@ Mar 10, 2008
  * Prototype 1.6.0.1 compatibility issue (77) resolved - thanks mike.nicholaides for the patch!
  * patch applied from mjroghelia to fix ie ssl iframe issue (84)
  * xhtml error fixed - &nbsp; replaced with #160;
- 
+
 ==Version 1.10 ==
 Dec 3, 2007
   * You can now pass in a parameter to tell CalendarDateSelect not to allow selection of certain dates.  See the [http://www.restatesman.com/static/calendar?tab=other demo] for an example.
-  
+
 ==Version 1.9.2==
 Nov 26, 2007
   * CalendarDateSelect was leaking javascript variables.  (nothing was explicitly declared local, so javascript assumes global).  Added test case and applied fix.  This may help with some of the conflicts CalendarDateSelect has been causing with other scripts.
@@ -113,7 +117,7 @@ Nov 26, 2007
   * Wes Hays brought up the point of parseInt trying to auto-detect number formats.  Wrote code to force interpretation of digits as base10, with test cases to prove it.
   * Misleading test case failure in Safari fixed: Safari won't let a boolean value to a property that should have a function (understandably).  Changed the test variable names to prevent such a conflict.
   * Now uses css :hover, rather than manually setting/removing the hover class.  If you are using a custom stylesheet, you'll need to change ".calendar_date_select tbody td.hover" to ".calendar_date_select tbody td:hover" (thanks, Alex Egg)
-  
+
 ==Version 1.9.1==
 Nov 15, 2007
   * Removed dependency on deprecated features in 1.6.0.  Thanks again, Richard Quadling!
@@ -149,8 +153,8 @@ Nov 12, 2007
 	* Bugfix for Konqueror - Was showing blank white box for popup window - had to do with Iframe hack.
 	* Code-refactoring, clean up, breaking down methods, making the code easier to understand and extend.
 	* Added new stylesheet definition: .calendar_date_select .cds_header a.close { display: none}.  Update your custom stylesheet with this new definition.
-	
-	
+
+
 ==Version 1.8.1==
 September 27 2007
   * 1.8.0 was rushed.  There were a bunch of bugs that cropped up immediately.  This deploy includes JavaScript unit testing using the scriptaculous unit test framework! ([http://www.restatesman.com/calendar_date_select/js_test/functional/cds_test.html click here to run the tests on the latest trunk version]).  These unit tests are going to greatly improve the reliability of CalendarDateSelect releases.
@@ -235,7 +239,7 @@ June 18, 2007
 June 16, 2007
 
   * more bug fixes (selecting across daylight savings time causing js error.  Sometimes clicking a day of the next month after selecting day 31 of the previous month was causing 2 months later to be selected)
-  
+
   * CSS improvements and refactoring
 
   * form builder methods now automatically detect whether or not to use a Time field
@@ -272,6 +276,6 @@ June 2, 2007
 June 1, 2007
 
   * Initial release!
-	
+
 
 

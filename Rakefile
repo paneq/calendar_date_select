@@ -7,11 +7,11 @@ begin
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "calendar_date_select"
     gemspec.version = File.read("VERSION").strip
-    gemspec.summary = "Calendar date picker for rails"
-    gemspec.description = "Calendar date picker for rails"
+    gemspec.summary = "Calendar date picker for Rails 4"
+    gemspec.description = "Calendar date picker for Rails 4"
     gemspec.email = ""
     gemspec.homepage = "http://github.com/timcharper/calendar_date_select"
-    gemspec.authors = ["Shih-gian Lee", "Enrique Garcia Cota (kikito)", "Tim Charper", "Lars E. Hoeg"]
+    gemspec.authors = ["Shih-gian Lee", "Enrique Garcia Cota (kikito)", "Tim Charper", "Lars E. Hoeg", "Andrew Hodgkinson"]
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
